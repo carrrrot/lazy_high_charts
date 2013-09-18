@@ -8,12 +8,12 @@ describe LazyHighCharts::OptionsKeyFilter do
 
   describe "filters :pointStart from a Date to a JavaScript compatible string" do
     before(:each) do
-      hash = LazyHighCharts::OptionsKeyFilter.filter(pointStart: Date.new(2012, 9, 13))
+      hash = LazyHighCharts::OptionsKeyFilter.filter(pointStart: Time.new(2012, 9 ,13, 23, 3, 3))
       @value = hash[:pointStart]
     end
 
     it "should be the correct string" do
-      @value.should == "Date.UTC(2012, 8, 13)"
+      @value.should == "Date.UTC(2012, 8, 13, 23, 3, 3)"
     end
 
     it "should be js_code" do
